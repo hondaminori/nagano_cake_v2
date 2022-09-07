@@ -1,0 +1,21 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: <%= ENV["DB_PASSWORD"] %>
+  host: db
+
+development:
+  <<: *default
+  database: nagano_cake_v2_development
+
+test:
+  <<: *default
+  database: nagano_cake_v2_test
+
+production:
+  <<: *default
+  database: nagano_cake_v2_production
+  username: nagano_cake_v2
+  password: <%= ENV['nagano_cake_v2_DATABASE_PASSWORD'] %>
